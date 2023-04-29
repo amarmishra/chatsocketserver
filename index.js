@@ -3,7 +3,7 @@ const app=express()
 const port=9000
 
 
-const db=require('./config/mongoose')
+/*const db=require('./config/mongoose')*/
 const chatServer=require('http').createServer()
 const io=require('./config/websocket').createSocket(chatServer)
 
