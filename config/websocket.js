@@ -7,7 +7,7 @@ module.exports.createSocket=function(server){
     //a websocket service running at port 8000 at the server
         const io= require("socket.io")(server,{
             cors:{
-                origin:['http://localhost:3000']    //take care of cors policy --allow orgin of react app
+                origin:'*'    //take care of cors policy --allow orgin of react app
             }
                 
         })
@@ -45,8 +45,8 @@ module.exports.createSocket=function(server){
                         // "seen":false,
                         // "id":Date.now()
             //broadcast message to other clients
-            console.log("Message recieved form",socket.id)
-            console.log(data)
+            // console.log("Message recieved form",socket.id)
+            // console.log(data)
             data.serverConfirmed=true
             data.sent=false;
             data.received=true
@@ -54,4 +54,6 @@ module.exports.createSocket=function(server){
             socket.broadcast.emit("messageServerToClient",data);
 
         }
+
+        return io
 }
